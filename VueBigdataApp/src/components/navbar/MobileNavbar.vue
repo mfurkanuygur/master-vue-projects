@@ -27,7 +27,7 @@ import home from '../../assets/home.png'
 import product from '../../assets/product.png'
 import info from '../../assets/info.png'
 import contact from '../../assets/contact.png'
-
+ 
 </script>
 
 
