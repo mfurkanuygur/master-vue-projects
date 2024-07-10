@@ -10,10 +10,10 @@
         <img :src="product" alt="product" className="page-link-logo" />
         <p className="page-link-title">product</p>
       </a>
-      <div href="#" className="page-link">
+      <a href="#" className="page-link">
         <img :src="info" alt="info" className="page-link-logo" />
         <p className="page-link-title">About</p>
-      </div>
+      </a>
       <a href="#" className="page-link">
         <img :src="contact" alt="contact" className="page-link-logo" />
         <p className="page-link-title">contact</p>
