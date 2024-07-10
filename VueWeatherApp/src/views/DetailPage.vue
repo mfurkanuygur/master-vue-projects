@@ -1,6 +1,6 @@
 <template>
     <div class="detail-section">
-      <h1 className="detail-title">today weather</h1>
+      <h1 className="detail-title">today's weather</h1>
       <divs v-if="dailyWeathers && remainingDays" class="detail-container">
         <div class="today-container">
           <div v-for="weather in dailyWeathers" :key="weather.id">
