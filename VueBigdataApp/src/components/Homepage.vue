@@ -1,36 +1,42 @@
 <template>
   <div class="homepage">
-    <!-- <h1>All Products: {{ products?.length }}</h1> -->
-    <div v-if="products" class="container">
-      <RenderProduct
-        v-for="product in products.slice(0, count)"
-        :key="product.id"
-        :product="product"
-      />
+    <div v-if="products.length > 0">
+      <div class="container">
+        <RenderProduct
+          v-for="product in products"
+          :key="product.id"
+          :product="product"
+        />
+      </div>
+      <div class="see-more-container">
+        <Loading v-if="loading" />
+        <button v-else class="see-more-button" @click="handleClick">See more</button>
+      </div>
     </div>
     <Loading v-else />
-    <div v-if="products" class="see-more-container">
-      <button class="see-more-button" @click="handleClick">see more</button>
-    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { getAllProducts } from '../request/request';
-import Loading from './Loading.vue';
-import RenderProduct from './RenderProduct.vue';
+import { ref, onMounted } from "vue";
+import { getAllProducts } from "../request/request";
+import Loading from "./Loading.vue";
+import RenderProduct from "./RenderProduct.vue";
 
-const products = ref(null);
-const count = ref(10);
+const products = ref([]);
+const skip = ref(0);
+const loading = ref(false);
 
-onMounted(async () => {
-  const data = await getAllProducts();
-  products.value = data;
-});
+const fetchProducts = async () => {
+  loading.value = true;
+  const data = await getAllProducts(skip.value);
+  products.value = [...products.value, ...data];
+  loading.value = false;
+};
+onMounted(fetchProducts);
 
 const handleClick = () => {
-  count.value += 10;
-  console.log(count.value);
+  skip.value += 10;
+  fetchProducts();
 };
 </script>
