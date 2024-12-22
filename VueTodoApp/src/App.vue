@@ -53,11 +53,12 @@ h3 {
 
 @media (max-width: 768px) {
   main {
-    min-width: 350px;
+      min-width: 350px;
+      max-width: 350px;
   }
-  .todo-form,
-  .todos {
-    padding: 0 20px;
-  }
+
+  
+
 }
+
 </style>
