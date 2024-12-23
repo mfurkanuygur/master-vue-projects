@@ -36,7 +36,7 @@ const fetchProducts = async () => {
 onMounted(fetchProducts);
 
 const handleClick = () => {
-  skip.value += 10;
+  skip.value += 8;
   fetchProducts();
 };
 </script>
